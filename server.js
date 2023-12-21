@@ -4,7 +4,7 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 const cors = require('cors');
-
+const fs = require('fs');
 app.use(cors());
 
 app.get('/jsonData', async (req, res) => {
@@ -30,7 +30,7 @@ app.get('/jsonData', async (req, res) => {
       let result = {
         'Город': item['Город'],
         'Фирма': item['Фирма'],
-        'Наименование': item['Наименование'],
+        'Отделение': item['Отделение'],
         'Тип': item['Тип'],
         'Ответственный': item['Ответственный'],
       };
@@ -39,7 +39,7 @@ app.get('/jsonData', async (req, res) => {
 
     // Convert the array to JSON
     const jsonData = JSON.stringify(resultsArray, null, 2);
-
+    fs.writeFileSync('results.json', resultsArray);
     // Send the JSON data as the API response
     res.json({ resultsArray });
   } catch (error) {
