@@ -17,6 +17,7 @@ app.get('/jsonData', (req, res) => {
     let result = {}
     filteredMore.forEach(item => {
       let result = {
+        'Отделение': item['Отделение'],
         'Город': item['Город'],
         'Фирма': item['Фирма'],
         'Наименование': item['Наименование'],
