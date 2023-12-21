@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const port = 3000;
+const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 app.use(cors());
@@ -39,7 +40,8 @@ app.get('/jsonData', async (req, res) => {
 
     // Convert the array to JSON
     const jsonData = JSON.stringify(resultsArray, null, 2);
-    fs.writeFileSync('results.json', jsonData );
+    const filePath = '/sip/viamedis/phonebook/БазаОСАстана.json';
+    fs.writeFileSync(filePath, jsonData);
     // Send the JSON data as the API response
     res.json({ resultsArray });
   } catch (error) {
