@@ -39,7 +39,7 @@ app.get('/jsonData', async (req, res) => {
 
     // Convert the array to JSON
     const jsonData = JSON.stringify(resultsArray, null, 2);
-    fs.writeFileSync('results.json', resultsArray);
+    fs.writeFileSync('results.json', jsonData );
     // Send the JSON data as the API response
     res.json({ resultsArray });
   } catch (error) {
