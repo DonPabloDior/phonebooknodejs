@@ -1,7 +1,6 @@
 const xlsx = require('xlsx');
 const express = require('express');
 const axios = require('axios');
-const cron = require('node-cron');
 const app = express();
 const port = 3000;
 const cors = require('cors');
@@ -48,8 +47,6 @@ app.get('/jsonData', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-cron.schedule('0 * * * *', fetchDataAndProcess);
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
